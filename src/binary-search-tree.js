@@ -47,7 +47,7 @@ class BinarySearchTree {
 	has(data) {
 		if (!data || !this._root) return;
 		const isHas = (current, _data) => {
-      if (!current) return false;
+			if (!current) return false;
 			if (current.data === _data) return true;
 			if (_data > current.data) {
 				return isHas(current.right, _data);
@@ -58,14 +58,14 @@ class BinarySearchTree {
 	}
 
 	find(data) {
-    if(!data || !this._root) return null;
-    const findData = (current, _data) => {
-      if (!current) return null;
-      if (current.data === _data) return current;
-      if (_data > current.data) return findData(current.right, _data);
-      if (_data < current.data) return findData(current.left, _data);
-    }
-    return findData(this._root, data)
+		if (!data || !this._root) return null;
+		const findData = (current, _data) => {
+			if (!current) return null;
+			if (current.data === _data) return current;
+			if (_data > current.data) return findData(current.right, _data);
+			if (_data < current.data) return findData(current.left, _data);
+		};
+		return findData(this._root, data);
 	}
 
 	remove(/* data */) {
@@ -74,13 +74,28 @@ class BinarySearchTree {
 	}
 
 	min() {
-		throw new NotImplementedError('Not implemented');
-		// remove line with error and write your code here
+    if (!this._root) return null;
+    
+		const findMin = current => {
+			while (current.left) {
+				current = current.left;
+			}
+			return current.data;
+		};
+
+		return findMin(this._root);
 	}
 
 	max() {
-		throw new NotImplementedError('Not implemented');
-		// remove line with error and write your code here
+		if (!this._root) return null;
+
+		const finMax = current => {
+			while (current.right) {
+				current = current.right;
+			}
+			return current.data;
+		};
+		return finMax(this._root);
 	}
 }
 
