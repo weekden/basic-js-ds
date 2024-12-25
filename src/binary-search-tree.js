@@ -115,13 +115,13 @@ class BinarySearchTree {
 	max() {
 		if (!this._root) return null;
 
-		const finMax = current => {
+		const findMax = current => {
 			while (current.right) {
 				current = current.right;
 			}
 			return current.data;
 		};
-		return finMax(this._root);
+		return findMax(this._root);
 	}
 }
 
